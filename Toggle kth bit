@@ -1,0 +1,8 @@
+def toggleBit(n, k):
+    return n ^ (1 << k)
+
+# Read input
+n, k = map(int, input().split())
+
+# Print the result
+print(toggleBit(n, k))
