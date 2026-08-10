@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main() {
+    int i, j, a, max_cycle_length = 0;
+    scanf("%d %d", &i, &j);
+    int start = i, end = j;
+    if (start > end) {
+        int temp = start;
+        start = end;
+        end = temp;
+    }
+    for (int n = start; n <= end; n++) {
+        int count = 1;
+        long long x = n;
+        while (x != 1) {
+            if (x % 2 == 0)
+                x = x / 2;
+            else
+                x = 3 * x + 1;
+            count++;
+        }
+        if (count > max_cycle_length)
+            max_cycle_length = count;
+    }
+    printf("%d %d %d\n", i, j, max_cycle_length);
+    return 0;
+}
