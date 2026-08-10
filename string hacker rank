@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+int longestPalindrome(char *A) {
+    int n = strlen(A);
+    int dp[n];
+    for (int i = 0; i < n; i++)
+        dp[i] = 1;
+    for (int i = n - 2; i >= 0; i--) {
+        int prev = 0;
+        for (int j = i + 1; j < n; j++) {
+            int temp = dp[j];
+            if (A[i] == A[j]) {
+                dp[j] = prev + 2;
+            } else {
+                if (dp[j - 1] > dp[j])
+                    dp[j] = dp[j - 1];
+            }
+            prev = temp;
+        }
+    }
+    return dp[n - 1];
+}
+int main() {
+    char A[1000];
+    scanf("%s", A);
+    printf("%d\n", longestPalindrome(A));
+    return 0;
+}
