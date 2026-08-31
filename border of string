@@ -1,0 +1,27 @@
+include<stdio.h>
+#include<string.h>
+int main(){
+    char s[10000];
+    scanf("%s",s);
+    int n = strlen(s);
+    int border[10000] = {0};
+    int len=0;
+    int i = 1;
+    while(i<n){
+        if(s[i] == s[len]){
+            len++;
+            border[i] =len;
+            i++;
+        }
+        else if(len!= 0){
+            len = border[len-1]; 
+        }else{
+            border[i]=0;
+            i++;
+         }
+        }
+        for(i=0;i<border[n-1];i++){
+            printf("%c",s[i]);
+        }
+        return 0;
+}
