@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+int main() {
+  char s[100000];
+  scanf("%s",s);
+  int n = strlen(s);
+  int pi[100000];
+  pi[0] = 0;
+  for(int i = 1,j = 0; i < n; i++){
+    while(j > 0 && s[i] != s[j])
+    j = pi[j - 1];
+    if(s[i] == s[j])
+    j++;
+    pi[i] = j;
+  }
+  int p = n - pi[n-1];
+  if(n % p == 0)
+   printf("%d", p);
+  else
+   printf("%d", n);
+   return 0 ;
+}
+    
