@@ -1,0 +1,22 @@
+n = int(input())
+
+words = input().split(",")
+
+pattern = input()
+
+found = False
+
+for word in words:
+    abbr = ""
+    
+    for ch in word:
+        if ch.isupper():
+            abbr += ch
+
+    # Check 
+    if abbr.startswith(pattern):
+        print(word, end=" ")
+        found = True
+
+if not found:
+    print("No match found")
