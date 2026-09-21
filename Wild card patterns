@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[10000], pattern[10000];
+    scanf("%s", str);
+    scanf("%s", pattern);
+
+    int i = 0, j = 0;
+    int star = -1;
+    int match = 0;
+    while (str[i] != '\0') {
+
+        if (pattern[j] == str[i] || pattern[j] == '?') {
+            i++;
+            j++;
+        }
+        else if (pattern[j] == '*') {
+            star = j;
+            match = i;
+            j++;
+        }
+        else if (star != -1) {
+            j = star + 1;
+            match++;
+            i = match;
+        }
+        else {
+            printf("0\n");
+            return 0;
+        }
+    }
+    while (pattern[j] == '*') {
+        j++;
+    }
+    if (pattern[j] == '\0')
+        printf("1\n");
+    else
+        printf("0\n");
+    return 0;
+}
